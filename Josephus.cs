@@ -23,7 +23,6 @@ namespace JosephusProblem
         Soldier actualSoldier;
         int correctId = -1;
         Ellipse bullet;
-        bool skipClick = false;
 
         public Josephus(Canvas canvas, int soldiers)
         {
@@ -90,14 +89,10 @@ Y = Cy + (r * sine(angle))
 
         internal void ScanOne()
         {
-            if( skipClick )
-            {
-                return;
-            }
+
             var nextToKill = findNextLive(actualSoldier);
             if (!nextToKill.Equals(actualSoldier))
             {
-                skipClick = true;
                 Kill(nextToKill);
             }
             else
@@ -165,17 +160,16 @@ Y = Cy + (r * sine(angle))
             newP.Y = Canvas.GetTop(toSoldier.Circle);
 
 
-            DoubleAnimation anim1 = new DoubleAnimation(oldP.X, newP.X, TimeSpan.FromSeconds(1.8));
+            DoubleAnimation anim1 = new DoubleAnimation(oldP.X, newP.X, TimeSpan.FromSeconds(0.8));
             //anim1.EasingFunction = new System.Windows.Media.Animation.BackEase();
-            DoubleAnimation anim2 = new DoubleAnimation(oldP.Y, newP.Y, TimeSpan.FromSeconds(1.8));
+            DoubleAnimation anim2 = new DoubleAnimation(oldP.Y, newP.Y, TimeSpan.FromSeconds(0.8));
             anim2.EasingFunction = new System.Windows.Media.Animation.PowerEase();
 
             bullet.Fill = Brushes.Green;
 
-            anim1.Completed += (o, e) =>
-            {
-                skipClick = false;
-            };
+            //anim1.Completed += (o, e) =>
+            //{
+            //};
 
             bullet.BeginAnimation(Canvas.LeftProperty, anim1);
             bullet.BeginAnimation(Canvas.TopProperty, anim2);
