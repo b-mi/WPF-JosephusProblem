@@ -1,0 +1,26 @@
+﻿<Window x:Class="JosephusProblem.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:JosephusProblem"
+        mc:Ignorable="d"
+        PreviewMouseLeftButtonDown="canvas_PreviewMouseLeftButtonDown"
+        Title="Josephus problem" WindowStyle="ToolWindow" WindowState="Maximized" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <ToolBar >
+            <TextBlock  Text="Soldiers count:" VerticalAlignment="Center"/>
+            <Slider Minimum="5" Maximum="100" Value="14" Width="300" Name="slSolds" ValueChanged="slSolds_ValueChanged" TickFrequency="1" IsSnapToTickEnabled="true" VerticalAlignment="Center"/>
+            <TextBlock x:Name="tbsl" Text="14" VerticalAlignment="Center"/>
+            <Separator></Separator>
+            <Button Click="Run_Click">Run</Button>
+            <Separator></Separator>
+        </ToolBar>
+        <Canvas Name="canvas" Grid.Row="1" >
+        </Canvas>
+    </Grid>
+</Window>
