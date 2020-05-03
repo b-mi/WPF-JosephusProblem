@@ -1,2 +1,6 @@
 # WPF-JosephusProblem
-Josephus problem with animation
+WPF Josephus problem with animation
+
+![](josephus.png)
+
+Binary solution
